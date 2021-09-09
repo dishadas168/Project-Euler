@@ -1,2 +1,2 @@
 # Project-Euler
-Project Euler Solutions in C++
+My Project Euler Solutions submitted to Hackerrank that have passed 100% test cases
