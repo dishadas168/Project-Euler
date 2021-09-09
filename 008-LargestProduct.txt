@@ -1,0 +1,13 @@
+long largestProduct(string N, int k){
+    long largest = 0;
+    long curr =1;
+    for(int i=0; i < N.length() - k; i++){
+        curr = 1;
+        for(int j=i; j< i+k; j++){
+            curr *= (N[j]-'0');
+        }
+        if(curr > largest)
+            largest = curr;
+    }
+    return largest;
+}

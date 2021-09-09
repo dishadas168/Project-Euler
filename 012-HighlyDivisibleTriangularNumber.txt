@@ -1,0 +1,41 @@
+long getTriangular(long num){
+    return num*(num+1)/2;
+}
+
+int getNumFactors(long n){
+    int d = 2, p, prod = 1;
+    while(n > 1)
+    {
+        p = 0;
+        while(n % d == 0)
+        {
+            p++;
+            n /= d;
+        }
+        if (p) prod *= (p + 1);
+        d++;
+        if (n > 1 && d*d > n)
+            d = n;
+    }
+    return prod;
+}
+
+long triangularNum(int num){
+    static map<int, long> first_occ;
+    static int last_N = 1;
+
+    long curr_num = 0;
+    if(first_occ.size())
+        curr_num = first_occ.rbegin()->second;
+        
+    while(last_N <= num ){
+        curr_num++;
+        long tri = getTriangular(curr_num);
+        int numFactors = getNumFactors(tri);
+        while(numFactors > last_N){
+            first_occ[last_N] = curr_num;
+            last_N++;
+        }  
+    }
+    return getTriangular(first_occ[num]);
+}
